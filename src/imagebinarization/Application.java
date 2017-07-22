@@ -1,6 +1,8 @@
 package imagebinarization;
 
+import imagebinarization.math.Binarization;
 import java.awt.Component;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -26,6 +28,13 @@ public class Application extends javax.swing.JFrame {
         jButtonLoadImage = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
         imagePanelInitial = new imagebinarization.model.ImagePanel();
+        imagePanelGrayscale = new imagebinarization.model.ImagePanel();
+        imagePanelHistogram = new imagebinarization.model.ImagePanel();
+        imagePanelFinal = new imagebinarization.model.ImagePanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Image binarization - Otsu's algorithm");
@@ -54,10 +63,63 @@ public class Application extends javax.swing.JFrame {
             .addGap(0, 221, Short.MAX_VALUE)
         );
 
+        imagePanelGrayscale.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout imagePanelGrayscaleLayout = new javax.swing.GroupLayout(imagePanelGrayscale);
+        imagePanelGrayscale.setLayout(imagePanelGrayscaleLayout);
+        imagePanelGrayscaleLayout.setHorizontalGroup(
+            imagePanelGrayscaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 266, Short.MAX_VALUE)
+        );
+        imagePanelGrayscaleLayout.setVerticalGroup(
+            imagePanelGrayscaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 221, Short.MAX_VALUE)
+        );
+
+        imagePanelHistogram.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout imagePanelHistogramLayout = new javax.swing.GroupLayout(imagePanelHistogram);
+        imagePanelHistogram.setLayout(imagePanelHistogramLayout);
+        imagePanelHistogramLayout.setHorizontalGroup(
+            imagePanelHistogramLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 266, Short.MAX_VALUE)
+        );
+        imagePanelHistogramLayout.setVerticalGroup(
+            imagePanelHistogramLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 221, Short.MAX_VALUE)
+        );
+
+        imagePanelFinal.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout imagePanelFinalLayout = new javax.swing.GroupLayout(imagePanelFinal);
+        imagePanelFinal.setLayout(imagePanelFinalLayout);
+        imagePanelFinalLayout.setHorizontalGroup(
+            imagePanelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 266, Short.MAX_VALUE)
+        );
+        imagePanelFinalLayout.setVerticalGroup(
+            imagePanelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 221, Short.MAX_VALUE)
+        );
+
+        jLabel1.setText("Original image");
+
+        jLabel2.setText("Grayscale");
+
+        jLabel3.setText("Histogram");
+
+        jLabel4.setText("Binarized image");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(113, 113, 113))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,8 +127,21 @@ public class Application extends javax.swing.JFrame {
                         .addComponent(jButtonLoadImage, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imagePanelInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(434, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(imagePanelInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(imagePanelGrayscale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(imagePanelHistogram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(imagePanelFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,8 +151,22 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(jButtonClear)
                     .addComponent(jButtonLoadImage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(imagePanelInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagePanelInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagePanelGrayscale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(imagePanelFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagePanelHistogram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,18 +175,25 @@ public class Application extends javax.swing.JFrame {
     private void jButtonLoadImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadImageActionPerformed
         final JFileChooser fileChooser = new JFileChooser();
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "tif")); 
-        int returnVal = fileChooser.showOpenDialog((Component) evt.getSource());
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
+        int retVal = fileChooser.showOpenDialog((Component) evt.getSource());
+        if (retVal == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             try {
-                imagePanelInitial.loadImgFile(file);
+                // load initial image
+                BufferedImage img = imagePanelInitial.loadImgFile(file);
                 imagePanelInitial.repaint();
-                System.out.println("File loaded: " + file.getName());
+                
+                // initial -> grayscale
+                BufferedImage grayscaled = Binarization.toGrayscale(img);
+                imagePanelGrayscale.setImage(grayscaled);
+                imagePanelGrayscale.repaint();
+                
+                // histogram
             } catch (Exception ex) {
-                System.out.println("problem accessing file" + file.getAbsolutePath());
+                System.out.println("Image load failed! Check if choosen file is in image format: " + file.getAbsolutePath());
             }
         } else {
-            System.out.println("File access cancelled by user.");
+            System.out.println("Image not selected.");
         }
     }//GEN-LAST:event_jButtonLoadImageActionPerformed
 
@@ -138,8 +234,15 @@ public class Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private imagebinarization.model.ImagePanel imagePanelFinal;
+    private imagebinarization.model.ImagePanel imagePanelGrayscale;
+    private imagebinarization.model.ImagePanel imagePanelHistogram;
     private imagebinarization.model.ImagePanel imagePanelInitial;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonLoadImage;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,9 +19,8 @@ public class Binarization {
                 blue  = new Color(initial.getRGB(i, j)).getBlue();
  
                 gsValue = (int) (0.21 * red + 0.71 * green + 0.07 * blue);
-                newPixel = colorToRGB(alpha, gsValue, gsValue, gsValue);
+                newPixel = grayscalePixel(alpha, gsValue, gsValue, gsValue);
                 
-                // set grayscaled pixel
                 lumImg.setRGB(i, j, newPixel);
             }
         }
@@ -30,14 +29,19 @@ public class Binarization {
     }
     
     // RGB and alpha to 8 bit
-    private static int colorToRGB(int alpha, int red, int green, int blue) {
-        int newPixel = 0;
-        newPixel += alpha;
-        newPixel = newPixel << 8;
-        newPixel += red; newPixel = newPixel << 8;
-        newPixel += green; newPixel = newPixel << 8;
-        newPixel += blue;
- 
-        return newPixel;
+    private static int grayscalePixel(int alpha, int red, int green, int blue) {
+        int pixel = 0;
+        pixel += alpha;
+        pixel = pixel << 8;
+        
+        pixel += red; 
+        pixel = pixel << 8;
+        
+        pixel += green; 
+        pixel = pixel << 8;
+        
+        pixel += blue;
+        
+        return pixel;
     }
 }

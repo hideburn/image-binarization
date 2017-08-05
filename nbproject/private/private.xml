@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="IMAGE_PROCESSING">
-            <file>file:/C:/Users/behrudin/Projects/NetBeans_Projects/ImageBinarization/src/imagebinarization/IBJFrame.java</file>
-            <file>file:/C:/Users/behrudin/Projects/NetBeans_Projects/ImageBinarization/src/assets.img/default.png</file>
+            <file>file:/C:/Users/behrudin/Projects/NetBeans_Projects/ImageBinarization/src/imagebinarization/Application.java</file>
+            <file>file:/C:/Users/behrudin/Projects/NetBeans_Projects/ImageBinarization/src/imagebinarization/math/Binarization.java</file>
             <file>file:/C:/Users/behrudin/Projects/NetBeans_Projects/ImageBinarization/src/imagebinarization/model/ImagePanel.java</file>
+            <file>file:/C:/Users/behrudin/Projects/NetBeans_Projects/ImageBinarization/src/assets.img/default.png</file>
         </group>
     </open-files>
 </project-private>

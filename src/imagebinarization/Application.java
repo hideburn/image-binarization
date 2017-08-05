@@ -1,11 +1,15 @@
 package imagebinarization;
 
 import imagebinarization.math.Binarization;
+import imagebinarization.model.Charter;
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.jfree.chart.ChartPanel;
 
 public class Application extends javax.swing.JFrame {
     
@@ -26,7 +30,6 @@ public class Application extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonLoadImage = new javax.swing.JButton();
-        jButtonClear = new javax.swing.JButton();
         imagePanelInitial = new imagebinarization.model.ImagePanel();
         imagePanelGrayscale = new imagebinarization.model.ImagePanel();
         imagePanelHistogram = new imagebinarization.model.ImagePanel();
@@ -47,33 +50,32 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
-        jButtonClear.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonClear.setText("Clear");
-
         imagePanelInitial.setBackground(new java.awt.Color(204, 204, 204));
+        imagePanelInitial.setPreferredSize(new java.awt.Dimension(306, 256));
 
         javax.swing.GroupLayout imagePanelInitialLayout = new javax.swing.GroupLayout(imagePanelInitial);
         imagePanelInitial.setLayout(imagePanelInitialLayout);
         imagePanelInitialLayout.setHorizontalGroup(
             imagePanelInitialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
         );
         imagePanelInitialLayout.setVerticalGroup(
             imagePanelInitialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
+            .addGap(0, 256, Short.MAX_VALUE)
         );
 
         imagePanelGrayscale.setBackground(new java.awt.Color(204, 204, 204));
+        imagePanelGrayscale.setPreferredSize(new java.awt.Dimension(306, 256));
 
         javax.swing.GroupLayout imagePanelGrayscaleLayout = new javax.swing.GroupLayout(imagePanelGrayscale);
         imagePanelGrayscale.setLayout(imagePanelGrayscaleLayout);
         imagePanelGrayscaleLayout.setHorizontalGroup(
             imagePanelGrayscaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
         );
         imagePanelGrayscaleLayout.setVerticalGroup(
             imagePanelGrayscaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
+            .addGap(0, 256, Short.MAX_VALUE)
         );
 
         imagePanelHistogram.setBackground(new java.awt.Color(204, 204, 204));
@@ -82,24 +84,25 @@ public class Application extends javax.swing.JFrame {
         imagePanelHistogram.setLayout(imagePanelHistogramLayout);
         imagePanelHistogramLayout.setHorizontalGroup(
             imagePanelHistogramLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
         );
         imagePanelHistogramLayout.setVerticalGroup(
             imagePanelHistogramLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
+            .addGap(0, 256, Short.MAX_VALUE)
         );
 
         imagePanelFinal.setBackground(new java.awt.Color(204, 204, 204));
+        imagePanelFinal.setPreferredSize(new java.awt.Dimension(306, 256));
 
         javax.swing.GroupLayout imagePanelFinalLayout = new javax.swing.GroupLayout(imagePanelFinal);
         imagePanelFinal.setLayout(imagePanelFinalLayout);
         imagePanelFinalLayout.setHorizontalGroup(
             imagePanelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
         );
         imagePanelFinalLayout.setVerticalGroup(
             imagePanelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Original image");
@@ -115,58 +118,53 @@ public class Application extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(113, 113, 113))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonLoadImage, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imagePanelHistogram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(imagePanelFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonLoadImage, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(imagePanelInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(imagePanelGrayscale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(imagePanelHistogram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(imagePanelFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(imagePanelGrayscale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(117, 117, 117)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(98, 98, 98))
+                .addGap(115, 115, 115))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonClear)
-                    .addComponent(jButtonLoadImage))
+                .addComponent(jButtonLoadImage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imagePanelInitial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imagePanelGrayscale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(imagePanelFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imagePanelHistogram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imagePanelHistogram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(imagePanelFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -189,6 +187,17 @@ public class Application extends javax.swing.JFrame {
                 imagePanelGrayscale.repaint();
                 
                 // histogram
+                imagePanelHistogram.removeAll();
+                ChartPanel histogram = Charter.getHistogramChart(grayscaled);
+                imagePanelHistogram.setLayout(new FlowLayout());
+                imagePanelHistogram.add(histogram, BorderLayout.NORTH);
+                imagePanelHistogram.revalidate();
+                
+                // binarized
+                BufferedImage binarized = Binarization.binarize(grayscaled);
+                imagePanelFinal.setImage(binarized);
+                imagePanelFinal.repaint();
+                
             } catch (Exception ex) {
                 System.out.println("Image load failed! Check if choosen file is in image format: " + file.getAbsolutePath());
             }
@@ -238,7 +247,6 @@ public class Application extends javax.swing.JFrame {
     private imagebinarization.model.ImagePanel imagePanelGrayscale;
     private imagebinarization.model.ImagePanel imagePanelHistogram;
     private imagebinarization.model.ImagePanel imagePanelInitial;
-    private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonLoadImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

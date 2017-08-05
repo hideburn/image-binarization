@@ -1,6 +1,5 @@
 package imagebinarization.model;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -14,13 +13,6 @@ public class ImagePanel extends JPanel {
     private BufferedImage image;
 
     public ImagePanel() {
-        // TODO: provjeri ovo, nesto nije ok sa classpathom
-        /*try {      
-           InputStream in = this.getClass().getClassLoader().getResourceAsStream("assets/img/default.png");
-           image = ImageIO.read(in);
-       } catch (IOException ex) {
-            System.out.println("Image load failed! Check if choosen file is in image format.");
-       }*/
     }
 
     public BufferedImage loadImgFile(File file) {
@@ -39,12 +31,6 @@ public class ImagePanel extends JPanel {
 
     public void setImage(BufferedImage bImage) {
         image = bImage;
-    }
-
-    public void clearPanel(){
-        if(image != null){
-            image.getGraphics().clearRect(0, 0, this.getWidth(), this.getHeight());
-        }
     }
     
     @Override

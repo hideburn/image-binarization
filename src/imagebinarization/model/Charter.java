@@ -31,12 +31,4 @@ public class Charter {
         return chartPanel;
     }
     
-   /* private static XYDataset createDataset() {
-        XYSeries series = new XYSeries("Histogram");
-        final AtomicInteger count = new AtomicInteger(0);
-        series.add(count.getAndAdd(1), 32);
-        XYSeriesCollection data = new XYSeriesCollection(series);
-        return data;
-    }*/
-    
 }
